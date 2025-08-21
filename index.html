@@ -132,15 +132,23 @@
             border-radius: 50%;
         }
         
-        .members-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 12px;
+        .members-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
         
-        .member {
-            width: 48px;
-            height: 48px;
+        .member-item {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            background: #2b2d31;
+            border-radius: 4px;
+        }
+        
+        .member-avatar {
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             background: #5865f2;
             display: flex;
@@ -148,54 +156,35 @@
             justify-content: center;
             color: white;
             font-weight: bold;
+            font-size: 12px;
+            margin-right: 12px;
+        }
+        
+        .member-name {
             font-size: 14px;
-            border: 3px solid #36393f;
-            position: relative;
-            transition: transform 0.2s ease;
+            color: #dcddde;
         }
         
-        .member:hover {
-            transform: scale(1.1);
+        .member-status {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-left: auto;
         }
         
-        .member.online::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 12px;
-            height: 12px;
+        .status-online {
             background: #23a55a;
-            border-radius: 50%;
-            border: 2px solid #36393f;
         }
         
-        .member.idle::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 12px;
-            height: 12px;
+        .status-idle {
             background: #f0b232;
-            border-radius: 50%;
-            border: 2px solid #36393f;
         }
         
-        .member.dnd::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 12px;
-            height: 12px;
+        .status-dnd {
             background: #f23f43;
-            border-radius: 50%;
-            border: 2px solid #36393f;
         }
         
         .member-count {
-            grid-column: span 5;
             text-align: center;
             margin-top: 16px;
             padding: 12px;
@@ -347,20 +336,50 @@
                 Membros Online — <span class="online-count">8</span>
             </div>
             
-            <div class="members-grid">
-                <div class="member online">RH</div>
-                <div class="member online">XC</div>
-                <div class="member online">TG</div>
-                <div class="member online">AP</div>
-                <div class="member online">MK</div>
-                <div class="member online">JL</div>
-                <div class="member idle">DP</div>
-                <div class="member online">KT</div>
-                <div class="member dnd">SW</div>
-                <div class="member online">NV</div>
-                
-                <div class="member-count">📋 23 membros no total • 🟢 8 online</div>
+            <div class="members-list">
+                <div class="member-item">
+                    <div class="member-avatar">RH</div>
+                    <div class="member-name">RafaelH</div>
+                    <div class="member-status status-online"></div>
+                </div>
+                <div class="member-item">
+                    <div class="member-avatar">XC</div>
+                    <div class="member-name">XavierC</div>
+                    <div class="member-status status-online"></div>
+                </div>
+                <div class="member-item">
+                    <div class="member-avatar">TG</div>
+                    <div class="member-name">TiagoG</div>
+                    <div class="member-status status-online"></div>
+                </div>
+                <div class="member-item">
+                    <div class="member-avatar">AP</div>
+                    <div class="member-name">AnaP</div>
+                    <div class="member-status status-idle"></div>
+                </div>
+                <div class="member-item">
+                    <div class="member-avatar">MK</div>
+                    <div class="member-name">MarianaK</div>
+                    <div class="member-status status-online"></div>
+                </div>
+                <div class="member-item">
+                    <div class="member-avatar">JL</div>
+                    <div class="member-name">JoãoL</div>
+                    <div class="member-status status-dnd"></div>
+                </div>
+                <div class="member-item">
+                    <div class="member-avatar">KT</div>
+                    <div class="member-name">KarinaT</div>
+                    <div class="member-status status-online"></div>
+                </div>
+                <div class="member-item">
+                    <div class="member-avatar">NV</div>
+                    <div class="member-name">NicolasV</div>
+                    <div class="member-status status-online"></div>
+                </div>
             </div>
+            
+            <div class="member-count">23 membros no total • 8 online</div>
         </div>
         
         <div class="action-section">
@@ -458,33 +477,6 @@
                 document.getElementById('loginForm').style.display = 'none';
             }, 3000);
         }
-
-        // Gera avatares com iniciais aleatórias
-        function generateRandomInitials() {
-            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            const members = document.querySelectorAll('.member');
-            const statuses = ['online', 'idle', 'dnd'];
-            
-            members.forEach(member => {
-                if (!member.classList.contains('member-count')) {
-                    const randomInit1 = letters[Math.floor(Math.random() * letters.length)];
-                    const randomInit2 = letters[Math.floor(Math.random() * letters.length)];
-                    member.textContent = randomInit1 + randomInit2;
-                    
-                    // Remove classes de status anteriores
-                    member.classList.remove('online', 'idle', 'dnd');
-                    
-                    // Adiciona status aleatório (mantendo alguns online)
-                    if (Math.random() > 0.3) {
-                        const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
-                        member.classList.add(randomStatus);
-                    }
-                }
-            });
-        }
-
-        // Gera iniciais aleatórias ao carregar
-        document.addEventListener('DOMContentLoaded', generateRandomInitials);
     </script>
 </body>
 </html>
